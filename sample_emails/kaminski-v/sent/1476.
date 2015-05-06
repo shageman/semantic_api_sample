@@ -1,0 +1,16 @@
+---------------------- Forwarded by Vince J Kaminski/HOU/ECT on 11/17/2000 
+05:01 PM ---------------------------
+
+
+Naveen Andrews@ENRON
+11/17/2000 04:41 PM
+To: Tanya Tamarchenko/HOU/ECT@ECT
+cc: Alex Huang/Corp/Enron@ENRON, Vince J Kaminski/HOU/ECT@ECT, Vasant 
+Shanbhogue/HOU/ECT@ECT, Ted Murphy/HOU/ECT@ECT, Vladimir Gorny/HOU/ECT@ECT 
+Subject: Re: smoothing methodology for extracting forward forward 
+volatilities  
+
+Tanya,
+            The exponentials we tried earlier (a+bexp(-cx), etc, fit well but 
+gave negative numbers in the bootstrapping.
+            I tried a + b(t+c)(-1) , a standard power law, and as the ?accompanying graph shows (for the 12 months), the fits are quite good.?            In this case, the ffvols do not become negative (I believe this ?corresponds to your 0 beta).  ?  I would have preferred exp(-t) and variants (can explain owing to ?mean-reverting vols), but the power law might be a practical alternative ?(from an implementation standpoint).?Naveen??? ????Tanya Tamarchenko@ECT?11/17/2000 02:59 PM?To: Naveen Andrews/Corp/Enron@ENRON, Alex Huang/Corp/Enron@ENRON?cc: Vince J Kaminski/HOU/ECT@ECT, Vasant Shanbhogue/HOU/ECT@ECT, Vladimir ?Gorny/HOU/ECT@ECT ??Subject: Re: smoothing methodology for extracting forward forward ?volatilities  ??Following up on our discussions I implemented one method for creating forward ?forward curve?from implied vol curve. ?I sorted out 12 forward curves from an original forward vol curve, each of 12 ?curves corresponding?to certain month. Then I fitted each of 12 curves with a function:??y=a+A/power(x+b, beta)??I figured out that when beta is from (0, .5) the above function is suitable ?for performing our bootstrapping?routine of deriving ff vols from implied, because:??y(x+t) * y(x+t) * (x+t) - y(x) * y(x) * tx> 0                  for all x, t.??(I have to double check on this again. Also when beta>0.5 there are some ?combinations of parameters a, A, b, beta?for which above equality holds). Even with restriction on beta this class of ?functions represents quite a variety of shapes.??Below you see the example of fitting as well as the example of ff vol curve ?constructed from implied vol curve for NG.??I'll try this for power as well.??Any comments??????????????
