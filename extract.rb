@@ -4,11 +4,9 @@ require 'mail'
 require 'pathname'
 
 input_root  = Pathname.new('enron_mail_20110402/maildir')
-output_root = Pathname.new('extracted')
+output_root = Pathname.new('sample_emails')
 
-# emails are available for only 4 of the 10 key players involved in the Enron scandal
-# http://www.nytimes.com/2006/01/29/business/businessspecial3/29profiles.html?pagewanted=all&_r=0
-people = ['kaminski-v', 'lay-k', 'skilling-j', 'whalley-g', 'kaminski-v']
+people = ['kaminski-v', 'lay-k', 'skilling-j', 'whalley-g']
 mail_folder = 'sent'
 
 people.each do |person|

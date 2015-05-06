@@ -1,4 +1,5 @@
 $:.unshift File.dirname(__FILE__)
+require 'bundler/setup'
 require 'client'
 require 'optparse'
 require 'pathname'
