@@ -22,7 +22,9 @@ class Client
     while status == 'pending'
       sleep(0.5)
       response = get_job(job_id)
-      status   = response['status']
+      p ["response", response]
+
+      status   =  response['status']
     end
 
     response
